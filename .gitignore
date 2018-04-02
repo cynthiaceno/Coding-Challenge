@@ -1,7 +1,53 @@
-.DS_Store
-applet
-application.linux32
-application.linux64
-application.windows32
-application.windows64
-application.macosx
+//Coding Challenge #1
+//Cynthia Luiza 
+
+//Variáveis 
+int cols, rows; 
+int scl = 20;
+
+float [] [] terrain;
+float flying =0;
+ void setup(){
+  size (1200,600,P3D); 
+  int w = 1000;
+  int h = 1000;
+  cols = w/scl;
+  rows = h/scl;
+  terrain = new float [cols][rows];  
+  //variável yoff
+ 
+ }
+ void draw () {
+   flying -= 0.03;
+    float yoff = flying;
+    for (int y =0; y< rows; y++){
+    beginShape(TRIANGLE_STRIP);
+    //variável xoff
+    float xoff = 0;
+    for (int x = 0; x< cols; x++){
+      terrain[x][y] = map(noise(xoff,yoff),0, 1, -150, 150);
+      xoff +=0.07;
+    }
+    yoff +=0.07;
+   }
+   
+  background (0);
+     stroke (255);
+     noFill();
+     
+     translate(width/2, height/2);
+     rotateX(PI/3);
+     translate(-width/2, -height/2);
+     
+  for (int y =0; y< rows-1; y++){
+    beginShape(TRIANGLE_STRIP);
+    for (int x = 0; x< cols; x++){
+      vertex(x*scl, y*scl,terrain[x][y]);
+      vertex (x*scl, (y+1)*scl,terrain[x][y+1]);
+       //rect(x*scl, y*scl, scl, scl);
+   }
+   endShape();
+  }
+ }
+ 
+ //S.messy :3
