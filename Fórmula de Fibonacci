@@ -1,0 +1,23 @@
+// Coding Challenge #2 - Fórmula de Fibonacci
+//Cynthia Luiza
+//Variáveis 
+int n = 0;
+int c = 2;
+
+void setup () {
+size (200, 200); /*Tamanho da tela de simulação*/
+background (0); /*Cor do fundo - preto(K)*/
+} 
+
+void draw() { 
+  float a = n*137.5; /*Fórmula de base - Fibonacci*/
+  float r = c* sqrt(n); /*relação do raio com a raiz quadrada de n*/
+  float x = r *cos(a) + width/2; /*cos na função (r) e (a) - Iniciar no centro*/
+  float y= r * sin(a) + height/2; /*seno na função (r) e (a) - Iniciar no centro*/
+  
+  fill(255); /*Preenchimento da forma - branco*/ 
+  ellipse(x,y,8,8); /* Forma geométrica - elípse na função (x)(y)*/
+  n++; /*Loop gradativo n+1...*/
+  /* Detalhe que nessa função tem-se a linha de quebra*/ 
+  /*Caso queira retirar essa linha de quebra basta add a função noStroke()*/
+}
